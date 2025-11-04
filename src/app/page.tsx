@@ -497,12 +497,12 @@ Looking forward to discussing this project with you!`;
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-8">
           <motion.h1
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-5xl md:text-7xl font-bold mb-6"
+            className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 sm:mb-6"
           >
             <span className="bg-gradient-to-r from-sky-400 via-purple-400 to-orange-400 bg-clip-text text-transparent">
               Transform Your Business
@@ -515,7 +515,7 @@ Looking forward to discussing this project with you!`;
             initial={{ opacity: 0, y: 30, filter: 'blur(10px)' }}
             animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-2xl text-slate-300 mb-12"
+            className="text-base sm:text-xl md:text-2xl text-slate-300 mb-8 sm:mb-12 px-4"
           >
             Professional Web Development Services | Fast Delivery | Conversion-Focused Design
           </motion.p>
@@ -524,13 +524,13 @@ Looking forward to discussing this project with you!`;
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-8 sm:mb-16 px-4"
           >
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => scrollToSection('portfolio')}
-              className="px-8 py-4 bg-gradient-to-r from-sky-500 to-purple-500 rounded-full font-semibold text-lg shadow-lg hover:shadow-sky-500/25 transition-all duration-300"
+              className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-sky-500 to-purple-500 rounded-full font-semibold text-base sm:text-lg shadow-lg hover:shadow-sky-500/25 transition-all duration-300"
             >
               View My Work
             </motion.button>
@@ -538,7 +538,7 @@ Looking forward to discussing this project with you!`;
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => scrollToSection('contact')}
-              className="px-8 py-4 border-2 border-slate-600 rounded-full font-semibold text-lg hover:bg-slate-800 hover:border-sky-400 transition-all duration-300"
+              className="px-6 sm:px-8 py-3 sm:py-4 border-2 border-slate-600 rounded-full font-semibold text-base sm:text-lg hover:bg-slate-800 hover:border-sky-400 transition-all duration-300"
             >
               Start Your Project
             </motion.button>
@@ -549,7 +549,7 @@ Looking forward to discussing this project with you!`;
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="flex flex-wrap justify-center gap-8"
+            className="flex flex-wrap justify-center gap-4 sm:gap-8 px-4"
           >
             {[
               { number: '15+', label: 'Successful Projects' },
@@ -563,8 +563,8 @@ Looking forward to discussing this project with you!`;
                 transition={{ delay: 1 + index * 0.1 }}
                 className="text-center"
               >
-                <div className="text-3xl font-bold text-sky-400">{stat.number}</div>
-                <div className="text-sm text-slate-400">{stat.label}</div>
+                <div className="text-2xl sm:text-3xl font-bold text-sky-400">{stat.number}</div>
+                <div className="text-xs sm:text-sm text-slate-400">{stat.label}</div>
               </motion.div>
             ))}
           </motion.div>
@@ -817,7 +817,8 @@ Looking forward to discussing this project with you!`;
             <PricingCard
               package={{
                 name: "Starter Package",
-                price: "₹15,000",
+                price: "₹6,000",
+                oldPrice: "₹10,000",
                 description: "Perfect for small businesses and startups",
                 features: [
                   "Single page website",
@@ -835,16 +836,17 @@ Looking forward to discussing this project with you!`;
             <PricingCard
               package={{
                 name: "Professional Package",
-                price: "₹30,000",
+                price: "₹15,000",
+                oldPrice: "₹25,000",
                 description: "Ideal for growing businesses",
                 features: [
-                  "Multi-page website (up to 5 pages)",
-                  "Advanced animations and interactions",
-                  "Booking/appointment system",
+                  "Up to 5 page website",
+                  "Mobile responsive design",
+                  "Contact form integration",
                   "WhatsApp integration",
-                  "Advanced SEO optimization",
+                  "Basic SEO optimization",
                   "3 months support",
-                  "Fast delivery (5-7 days)"
+                  "Fast delivery (7-10 days)"
                 ],
                 color: "from-sky-500 to-purple-500",
                 popular: true
@@ -853,14 +855,15 @@ Looking forward to discussing this project with you!`;
             />
             <PricingCard
               package={{
-                name: "Enterprise Package",
+                name: "Business Package",
                 price: "Custom Quote",
                 description: "For large businesses with complex needs",
                 features: [
-                  "E-commerce functionality",
-                  "Custom features and integrations",
-                  "Advanced booking systems",
-                  "Complete SEO strategy",
+                  "Unlimited pages",
+                  "All advanced features included",
+                  "Custom functionality",
+                  "E-commerce integration",
+                  "Advanced SEO strategy",
                   "Priority support",
                   "Ongoing maintenance",
                   "Custom timeline"
@@ -1438,10 +1441,10 @@ const ContactForm = ({
                     <SelectValue placeholder="Select budget" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="under-15k">Under ₹15,000</SelectItem>
+                    <SelectItem value="under-6k">Under ₹6,000</SelectItem>
+                    <SelectItem value="6k-15k">₹6,000-₹15,000</SelectItem>
                     <SelectItem value="15k-30k">₹15,000-₹30,000</SelectItem>
-                    <SelectItem value="30k-50k">₹30,000-₹50,000</SelectItem>
-                    <SelectItem value="50k+">₹50,000+</SelectItem>
+                    <SelectItem value="30k+">₹30,000+</SelectItem>
                     <SelectItem value="not-sure">Not Sure</SelectItem>
                   </SelectContent>
                 </Select>
@@ -1603,9 +1606,23 @@ const PricingCard = ({ package: pkg, index }: { package: any; index: number }) =
               transition={{ delay: index * 0.2 + 0.4 }}
               className="mb-6"
             >
-              <div className="text-4xl font-bold bg-gradient-to-r from-sky-400 to-purple-400 bg-clip-text text-transparent">
-                {pkg.price}
+              <div className="flex items-center justify-center gap-3">
+                <div className="text-4xl font-bold bg-gradient-to-r from-sky-400 to-purple-400 bg-clip-text text-transparent">
+                  {pkg.price}
+                </div>
+                {pkg.oldPrice && (
+                  <div className="text-xl text-slate-500 line-through">
+                    {pkg.oldPrice}
+                  </div>
+                )}
               </div>
+              {pkg.oldPrice && (
+                <div className="mt-2 inline-block px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-sm font-semibold">
+                  Save {parseInt(pkg.oldPrice.replace(/[^0-9]/g, '')) - parseInt(pkg.price.replace(/[^0-9]/g, '')) > 0
+                    ? `₹${parseInt(pkg.oldPrice.replace(/[^0-9]/g, '')) - parseInt(pkg.price.replace(/[^0-9]/g, ''))}`
+                    : ''}
+                </div>
+              )}
             </motion.div>
 
             <ul className="space-y-3 mb-8">
