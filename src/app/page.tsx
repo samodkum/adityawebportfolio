@@ -832,6 +832,7 @@ Looking forward to discussing this project with you!`;
                 popular: false
               }}
               index={0}
+              scrollToSection={scrollToSection}
             />
             <PricingCard
               package={{
@@ -852,6 +853,7 @@ Looking forward to discussing this project with you!`;
                 popular: true
               }}
               index={1}
+              scrollToSection={scrollToSection}
             />
             <PricingCard
               package={{
@@ -872,6 +874,7 @@ Looking forward to discussing this project with you!`;
                 popular: false
               }}
               index={2}
+              scrollToSection={scrollToSection}
             />
           </div>
         </SectionWrapper>
@@ -1532,7 +1535,7 @@ const ContactForm = ({
   );
 };
 
-const PricingCard = ({ package: pkg, index }: { package: any; index: number }) => {
+const PricingCard = ({ package: pkg, index, scrollToSection }: { package: any; index: number; scrollToSection: (sectionId: string) => void }) => {
   const [ref, inView] = useInView({
     threshold: 0.1
   });
