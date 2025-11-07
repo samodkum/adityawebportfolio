@@ -373,9 +373,9 @@ Looking forward to discussing this project with you!`;
       {/* Hero Section */}
       <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Animated Background */}
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 pointer-events-none">
           <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
-          
+
           {/* Animated Gradient Mesh */}
           <motion.div
             animate={{
@@ -390,7 +390,7 @@ Looking forward to discussing this project with you!`;
               ]
             }}
             transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute inset-0"
+            className="absolute inset-0 pointer-events-none"
           />
           
           {/* Floating Geometric Shapes */}
@@ -409,7 +409,7 @@ Looking forward to discussing this project with you!`;
                 ease: "easeInOut",
                 delay: i * 0.5
               }}
-              className="absolute"
+              className="absolute pointer-events-none"
               style={{
                 left: `${10 + i * 12}%`,
                 top: `${15 + i * 8}%`,
@@ -430,7 +430,7 @@ Looking forward to discussing this project with you!`;
               backgroundPosition: ['0px 0px', '50px 50px', '0px 0px']
             }}
             transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            className="absolute inset-0 opacity-10"
+            className="absolute inset-0 opacity-10 pointer-events-none"
             style={{
               backgroundImage: `
                 linear-gradient(rgba(14, 165, 233, 0.1) 1px, transparent 1px),
@@ -455,7 +455,7 @@ Looking forward to discussing this project with you!`;
                 ease: "easeInOut",
                 delay: Math.random() * 5
               }}
-              className="absolute w-1 h-1 bg-sky-400 rounded-full"
+              className="absolute w-1 h-1 bg-sky-400 rounded-full pointer-events-none"
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
@@ -464,7 +464,7 @@ Looking forward to discussing this project with you!`;
           ))}
 
           {/* Connecting Lines */}
-          <svg className="absolute inset-0 w-full h-full opacity-20">
+          <svg className="absolute inset-0 w-full h-full opacity-20 pointer-events-none">
             {[...Array(5)].map((_, i) => (
               <motion.line
                 key={`line-${i}`}
