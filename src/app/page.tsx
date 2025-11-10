@@ -3,15 +3,16 @@
 import { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { 
-  Menu, X, ChevronDown, ExternalLink, Star, 
-  Code, Palette, Rocket, Bug, Lightbulb, Search, 
+import {
+  Menu, X, ChevronDown, ExternalLink, Star,
+  Code, Palette, Rocket, Bug, Lightbulb, Search,
   ShoppingBag, Scissors, Stethoscope, Utensils,
   CheckCircle, ArrowRight, Mail, Phone, MapPin,
   Github, Linkedin, Twitter, Globe, Zap, Shield,
   Clock, Award, TrendingUp, Users, Target,
   Smartphone, Tablet, Monitor, Wifi, Cloud,
-  Database, Server, Cpu, HardDrive, Network
+  Database, Server, Cpu, HardDrive, Network,
+  MessageSquare, Mic, Info, Plus, Sparkles
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -21,6 +22,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const Portfolio = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -813,22 +816,36 @@ Looking forward to discussing this project with you!`;
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
             <PricingCard
               package={{
                 name: "Starter Package",
-                price: "₹6,000",
-                oldPrice: "₹10,000",
-                description: "Perfect for small businesses and startups",
+                price: "₹8,000",
+                description: "Landing Page Design & Development",
                 features: [
-                  "Single page website",
+                  "1 custom landing page",
                   "Mobile responsive design",
                   "Contact form integration",
-                  "Basic SEO optimization",
-                  "1 month support",
+                  "Basic on-page SEO optimization",
+                  "1-month free support",
                   "Fast delivery (3-5 days)"
                 ],
-                color: "from-slate-600 to-slate-700",
+                addons: [
+                  {
+                    icon: MessageSquare,
+                    name: "AI Chatbot Integration",
+                    price: "₹7,999",
+                    total: "₹15,999",
+                    features: [
+                      "Custom chatbot trained for your business",
+                      "Handles FAQs and customer inquiries",
+                      "Integrated into landing page",
+                      "Custom branding and welcome message"
+                    ]
+                  }
+                ],
+                note: "AI Voice Bot not available in Starter Package",
+                color: "from-blue-500 to-cyan-500",
                 popular: false
               }}
               index={0}
@@ -837,19 +854,55 @@ Looking forward to discussing this project with you!`;
             <PricingCard
               package={{
                 name: "Professional Package",
-                price: "₹15,000",
-                oldPrice: "₹25,000",
-                description: "Ideal for growing businesses",
+                price: "₹26,999",
+                description: "5-6 Page Business Website",
                 features: [
-                  "Up to 5 page website",
-                  "Mobile responsive design",
-                  "Contact form integration",
+                  "Up to 6 custom pages",
+                  "Mobile responsive and SEO-optimized",
+                  "Contact & inquiry forms",
                   "WhatsApp integration",
-                  "Basic SEO optimization",
-                  "3 months support",
+                  "1-month free support",
                   "Fast delivery (7-10 days)"
                 ],
-                color: "from-sky-500 to-purple-500",
+                addons: [
+                  {
+                    icon: MessageSquare,
+                    name: "AI Chatbot Integration",
+                    price: "₹8,000",
+                    total: "₹34,999",
+                    features: [
+                      "Fully customized for your brand",
+                      "Trained on service FAQs and business tone",
+                      "Lead capture capabilities",
+                      "Seamless website integration"
+                    ]
+                  },
+                  {
+                    icon: Mic,
+                    name: "AI Voice Bot Integration (Basic)",
+                    price: "₹18,000",
+                    total: "₹44,999",
+                    features: [
+                      "Voice bot handles customer FAQs",
+                      "Speech-based interactions",
+                      "₹8/min usage cost (charged to client)",
+                      "One-time creation charge"
+                    ],
+                    upgrade: {
+                      name: "Advanced Version",
+                      price: "₹30,000",
+                      total: "₹56,999",
+                      features: [
+                        "All basic features plus:",
+                        "Appointment booking via voice",
+                        "Automatic CRM data entry",
+                        "Email confirmations",
+                        "Custom branded voice personality"
+                      ]
+                    }
+                  }
+                ],
+                color: "from-purple-500 to-pink-500",
                 popular: true
               }}
               index={1}
@@ -857,26 +910,160 @@ Looking forward to discussing this project with you!`;
             />
             <PricingCard
               package={{
-                name: "Business Package",
+                name: "Business / Custom Package",
                 price: "Custom Quote",
-                description: "For large businesses with complex needs",
+                description: "For larger businesses and advanced projects",
                 features: [
-                  "Unlimited pages",
-                  "All advanced features included",
-                  "Custom functionality",
-                  "E-commerce integration",
-                  "Advanced SEO strategy",
+                  "Unlimited pages and functionalities",
+                  "E-commerce, automation, AI tools",
+                  "CRM integration",
+                  "Advanced SEO and performance",
                   "Priority support",
                   "Ongoing maintenance",
                   "Custom timeline"
                 ],
-                color: "from-purple-600 to-pink-600",
+                addons: [
+                  {
+                    icon: MessageSquare,
+                    name: "AI Chatbot",
+                    price: "Available",
+                    features: ["Customized pricing based on requirements"]
+                  },
+                  {
+                    icon: Mic,
+                    name: "AI Voice Bot",
+                    price: "Available",
+                    features: ["Customized pricing based on requirements"]
+                  }
+                ],
+                color: "from-orange-500 to-yellow-500",
                 popular: false
               }}
               index={2}
               scrollToSection={scrollToSection}
             />
           </div>
+
+          {/* Support Policy */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto mb-16"
+          >
+            <Card className="bg-slate-800/50 border-slate-700">
+              <CardContent className="p-8">
+                <div className="flex items-center space-x-3 mb-4">
+                  <Shield className="h-8 w-8 text-green-400" />
+                  <h3 className="text-2xl font-bold">Included with Every Website</h3>
+                </div>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 className="font-semibold text-sky-400 mb-3">Free 1-Month Support Period</h4>
+                    <ul className="space-y-2 text-slate-300">
+                      <li className="flex items-start space-x-2">
+                        <CheckCircle className="h-5 w-5 text-green-400 mt-0.5 flex-shrink-0" />
+                        <span>Minor bug fixes</span>
+                      </li>
+                      <li className="flex items-start space-x-2">
+                        <CheckCircle className="h-5 w-5 text-green-400 mt-0.5 flex-shrink-0" />
+                        <span>Small content updates (text, images, links)</span>
+                      </li>
+                      <li className="flex items-start space-x-2">
+                        <CheckCircle className="h-5 w-5 text-green-400 mt-0.5 flex-shrink-0" />
+                        <span>Basic technical assistance</span>
+                      </li>
+                      <li className="flex items-start space-x-2">
+                        <CheckCircle className="h-5 w-5 text-green-400 mt-0.5 flex-shrink-0" />
+                        <span>Form troubleshooting</span>
+                      </li>
+                      <li className="flex items-start space-x-2">
+                        <CheckCircle className="h-5 w-5 text-green-400 mt-0.5 flex-shrink-0" />
+                        <span>Guidance for managing your site</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-orange-400 mb-3">After Support Period</h4>
+                    <p className="text-slate-300 mb-3">
+                      Clients can opt for paid maintenance packages if continuous updates are needed.
+                    </p>
+                    <p className="text-sm text-slate-400 italic">
+                      Support excludes new features, redesigns, or additional pages (requires separate quote).
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+
+          {/* Client Guidance */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center max-w-3xl mx-auto mb-16"
+          >
+            <div className="bg-gradient-to-r from-sky-500/10 to-purple-500/10 border border-sky-500/20 rounded-lg p-6">
+              <div className="flex items-center justify-center space-x-2 mb-3">
+                <Info className="h-5 w-5 text-sky-400" />
+                <h4 className="font-semibold text-lg">Pricing Information</h4>
+              </div>
+              <p className="text-slate-300 text-sm">
+                All prices are averages based on standard project complexity. Final cost depends on website structure, required integrations, and custom features.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* CTA Below Pricing */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <motion.h3
+              animate={{
+                backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
+              }}
+              transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
+              className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-sky-400 via-purple-400 to-orange-400 bg-clip-text text-transparent bg-[length:200%_auto]"
+            >
+              Let's Build Your Website — Powered by Smart Automation
+            </motion.h3>
+            <p className="text-lg text-slate-300 mb-8 max-w-2xl mx-auto">
+              From modern designs to AI chatbots and voice bots — bring your digital presence to life.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => scrollToSection('contact')}
+                className="px-8 py-4 bg-gradient-to-r from-sky-500 to-purple-500 rounded-full font-semibold text-lg shadow-lg hover:shadow-sky-500/25 transition-all duration-300 relative overflow-hidden group"
+              >
+                <motion.div
+                  animate={{
+                    x: ['-100%', '100%']
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "linear"
+                  }}
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                />
+                <span className="relative">Get Free Quote</span>
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.05, borderColor: 'rgba(14, 165, 233, 1)' }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => scrollToSection('contact')}
+                className="px-8 py-4 border-2 border-slate-600 rounded-full font-semibold text-lg hover:bg-slate-800 transition-all duration-300"
+              >
+                Book a Consultation
+              </motion.button>
+            </div>
+          </motion.div>
         </SectionWrapper>
       </section>
 
@@ -1539,23 +1726,24 @@ const PricingCard = ({ package: pkg, index, scrollToSection }: { package: any; i
   const [ref, inView] = useInView({
     threshold: 0.1
   });
+  const [expandedAddon, setExpandedAddon] = useState<number | null>(null);
 
   return (
     <motion.div
       ref={ref}
-      animate={inView ? { 
-        opacity: 1, 
+      animate={inView ? {
+        opacity: 1,
         rotateY: 0,
         rotateX: 0,
         z: 0
-      } : { 
-        opacity: 0, 
+      } : {
+        opacity: 0,
         rotateY: 45,
         rotateX: 15,
         z: -100
       }}
       transition={{ duration: 0.8, delay: index * 0.2 }}
-      whileHover={{ 
+      whileHover={{
         rotateY: 5,
         rotateX: 5,
         scale: 1.02,
@@ -1574,27 +1762,25 @@ const PricingCard = ({ package: pkg, index, scrollToSection }: { package: any; i
           </Badge>
         </motion.div>
       )}
-      
+
       <Card className={`h-full relative overflow-hidden ${
-        pkg.popular 
-          ? 'bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-sky-500/50 shadow-2xl shadow-sky-500/20' 
+        pkg.popular
+          ? 'bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-sky-500/50 shadow-2xl shadow-sky-500/20'
           : 'bg-slate-800/50 border-slate-700 hover:border-sky-500/50'
       } transition-all duration-300`}>
-        {/* Animated gradient border */}
         <motion.div
           animate={{
             background: [
-              `linear-gradient(45deg, transparent, ${pkg.popular ? 'rgba(14, 165, 233, 0.5)' : 'rgba(168, 85, 247, 0.3)'}, transparent)`,
-              `linear-gradient(135deg, transparent, ${pkg.popular ? 'rgba(168, 85, 247, 0.5)' : 'rgba(249, 115, 22, 0.3)'}, transparent)`,
-              `linear-gradient(225deg, transparent, ${pkg.popular ? 'rgba(249, 115, 22, 0.5)' : 'rgba(14, 165, 233, 0.3)'}, transparent)`,
-              `linear-gradient(315deg, transparent, ${pkg.popular ? 'rgba(14, 165, 233, 0.5)' : 'rgba(168, 85, 247, 0.3)'}, transparent)`
+              `linear-gradient(45deg, transparent, ${pkg.color.includes('blue') ? 'rgba(14, 165, 233, 0.3)' : pkg.color.includes('purple') ? 'rgba(168, 85, 247, 0.3)' : 'rgba(249, 115, 22, 0.3)'}, transparent)`,
+              `linear-gradient(135deg, transparent, ${pkg.color.includes('blue') ? 'rgba(6, 182, 212, 0.3)' : pkg.color.includes('purple') ? 'rgba(236, 72, 153, 0.3)' : 'rgba(250, 204, 21, 0.3)'}, transparent)`,
+              `linear-gradient(225deg, transparent, ${pkg.color.includes('blue') ? 'rgba(14, 165, 233, 0.3)' : pkg.color.includes('purple') ? 'rgba(168, 85, 247, 0.3)' : 'rgba(249, 115, 22, 0.3)'}, transparent)`
             ]
           }}
           transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
           className="absolute inset-0 opacity-30"
         />
-        
-        <CardContent className="relative p-8">
+
+        <CardContent className="relative p-6">
           <motion.div
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ delay: index * 0.2 + 0.3 }}
@@ -1602,50 +1788,127 @@ const PricingCard = ({ package: pkg, index, scrollToSection }: { package: any; i
             <h3 className="text-2xl font-bold mb-2 group-hover:text-sky-400 transition-colors">
               {pkg.name}
             </h3>
-            <p className="text-slate-400 mb-6">{pkg.description}</p>
-            
+            <p className="text-slate-400 mb-4 text-sm">{pkg.description}</p>
+
             <motion.div
               animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5 }}
               transition={{ delay: index * 0.2 + 0.4 }}
               className="mb-6"
             >
-              <div className="flex items-center justify-center gap-3">
-                <div className="text-4xl font-bold bg-gradient-to-r from-sky-400 to-purple-400 bg-clip-text text-transparent">
-                  {pkg.price}
-                </div>
-                {pkg.oldPrice && (
-                  <div className="text-xl text-slate-500 line-through">
-                    {pkg.oldPrice}
-                  </div>
-                )}
+              <div className={`text-4xl font-bold bg-gradient-to-r ${pkg.color} bg-clip-text text-transparent text-center`}>
+                {pkg.price}
               </div>
-              {pkg.oldPrice && (
-                <div className="mt-2 inline-block px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-sm font-semibold">
-                  Save {parseInt(pkg.oldPrice.replace(/[^0-9]/g, '')) - parseInt(pkg.price.replace(/[^0-9]/g, '')) > 0
-                    ? `₹${parseInt(pkg.oldPrice.replace(/[^0-9]/g, '')) - parseInt(pkg.price.replace(/[^0-9]/g, ''))}`
-                    : ''}
-                </div>
-              )}
             </motion.div>
 
-            <ul className="space-y-3 mb-8">
-              {pkg.features.map((feature: string, i: number) => (
-                <motion.li
-                  key={i}
-                  animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                  transition={{ delay: index * 0.2 + 0.5 + i * 0.1 }}
-                  className="flex items-center space-x-3"
-                >
-                  <motion.div
-                    animate={inView ? { scale: 1 } : { scale: 0 }}
-                    transition={{ delay: index * 0.2 + 0.5 + i * 0.1, type: "spring" }}
+            <div className="space-y-2 mb-6">
+              <h4 className="text-sm font-semibold text-sky-400 mb-3">Base Features</h4>
+              <ul className="space-y-2">
+                {pkg.features.map((feature: string, i: number) => (
+                  <motion.li
+                    key={i}
+                    animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+                    transition={{ delay: index * 0.2 + 0.5 + i * 0.05 }}
+                    className="flex items-start space-x-2 text-sm"
                   >
-                    <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0" />
-                  </motion.div>
-                  <span className="text-slate-300">{feature}</span>
-                </motion.li>
-              ))}
-            </ul>
+                    <CheckCircle className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" />
+                    <span className="text-slate-300">{feature}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+
+            {pkg.addons && pkg.addons.length > 0 && (
+              <div className="space-y-3 mb-6">
+                <div className="flex items-center space-x-2 mb-3">
+                  <Sparkles className="h-4 w-4 text-purple-400" />
+                  <h4 className="text-sm font-semibold text-purple-400">Available Add-ons</h4>
+                </div>
+                {pkg.addons.map((addon: any, addonIndex: number) => (
+                  <div key={addonIndex} className="bg-slate-700/30 rounded-lg p-3 border border-slate-600/50">
+                    <div className="flex items-center justify-between mb-2">
+                      <div className="flex items-center space-x-2">
+                        <addon.icon className="h-4 w-4 text-sky-400" />
+                        <span className="text-sm font-semibold">{addon.name}</span>
+                        <Tooltip>
+                          <TooltipTrigger>
+                            <Info className="h-3 w-3 text-slate-400 cursor-help" />
+                          </TooltipTrigger>
+                          <TooltipContent className="max-w-xs">
+                            {addon.icon === MessageSquare ?
+                              "Smart text-based assistant that handles customer questions 24/7" :
+                              "Voice-powered assistant that can speak and handle real-time customer queries"}
+                          </TooltipContent>
+                        </Tooltip>
+                      </div>
+                      <button
+                        onClick={() => setExpandedAddon(expandedAddon === addonIndex ? null : addonIndex)}
+                        className="text-sky-400 hover:text-sky-300 transition-colors"
+                      >
+                        <ChevronDown className={`h-4 w-4 transition-transform ${expandedAddon === addonIndex ? 'rotate-180' : ''}`} />
+                      </button>
+                    </div>
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-xs text-slate-400">Add-on Price:</span>
+                      <span className="text-sm font-bold text-orange-400">{addon.price}</span>
+                    </div>
+                    {addon.total && (
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs text-slate-400">Total with add-on:</span>
+                        <span className="text-sm font-semibold text-green-400">{addon.total}</span>
+                      </div>
+                    )}
+                    <AnimatePresence>
+                      {expandedAddon === addonIndex && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="overflow-hidden"
+                        >
+                          <div className="mt-3 pt-3 border-t border-slate-600/50">
+                            <ul className="space-y-1.5">
+                              {addon.features.map((feat: string, fi: number) => (
+                                <li key={fi} className="flex items-start space-x-2 text-xs text-slate-300">
+                                  <Plus className="h-3 w-3 text-green-400 mt-0.5 flex-shrink-0" />
+                                  <span>{feat}</span>
+                                </li>
+                              ))}
+                            </ul>
+                            {addon.upgrade && (
+                              <div className="mt-3 p-2 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded border border-purple-500/20">
+                                <div className="flex items-center justify-between mb-2">
+                                  <span className="text-xs font-semibold text-purple-400">{addon.upgrade.name}</span>
+                                  <span className="text-sm font-bold text-purple-400">{addon.upgrade.price}</span>
+                                </div>
+                                <div className="text-xs text-slate-400 mb-1">Total: {addon.upgrade.total}</div>
+                                <ul className="space-y-1">
+                                  {addon.upgrade.features.map((feat: string, ufi: number) => (
+                                    <li key={ufi} className="flex items-start space-x-2 text-xs text-slate-300">
+                                      <Sparkles className="h-3 w-3 text-purple-400 mt-0.5 flex-shrink-0" />
+                                      <span>{feat}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            )}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {pkg.note && (
+              <div className="mb-6 p-3 bg-orange-500/10 border border-orange-500/20 rounded-lg">
+                <p className="text-xs text-orange-400 flex items-start space-x-2">
+                  <Info className="h-3 w-3 mt-0.5 flex-shrink-0" />
+                  <span>{pkg.note}</span>
+                </p>
+              </div>
+            )}
 
             <motion.button
               whileHover={{ scale: 1.05 }}
